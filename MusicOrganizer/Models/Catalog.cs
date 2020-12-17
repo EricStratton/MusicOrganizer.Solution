@@ -4,10 +4,11 @@ namespace Organizer.Models
 {
   public class Catalog
   {
+    private static List<Catalog> _instances = new List<Catalog> {};
     public string Name { get; set; }
     public int Id { get; }
     public List<Record> Records { get; set; }
-    private List<Catalog> _instances = new List<Catalog> {};
+    
 
     public Catalog(string catalogName)
     {
@@ -19,7 +20,7 @@ namespace Organizer.Models
 
     public static void ClearAll()
     {
-      _instances.Clear()
+      _instances.Clear();
     }
 
     public static List<Catalog> GetAll()
