@@ -20,7 +20,7 @@ namespace Organizer.Controllers
       return View();
     }
 
-    [HttpPost("/catalogs")]
+    [HttpPost("/catalogs")] // Create a new catalog
     public ActionResult Create(string catalogName)
     {
       Catalog newCatalog = new Catalog(catalogName);
@@ -38,12 +38,12 @@ namespace Organizer.Controllers
       return View(model);
     }
 
-    [HttpGet("/catalogs/{catalogId}/records")] // 'Create' a new record
-    public ActionResult Create(int catalogId, string recordAlbum, string recordArtist)
+    [HttpPost("/catalogs/{catalogId}/records")] // 'Create' a new record
+    public ActionResult Create(int catalogId, string recordAlbum)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
       Catalog foundCatalog = Catalog.Find(catalogId);
-      Record newRecord = new Record(recordAlbum, recordArtist);
+      Record newRecord = new Record(recordAlbum);
       foundCatalog.AddRecord(newRecord);
       List<Record> catalogRecords = foundCatalog.Records;
       model.Add("records", catalogRecords);

@@ -6,14 +6,14 @@ namespace Organizer.Models
   {
 
     public string Album { get; set; }
-    public string Artist { get; set; }
+    // public string Artist { get; set; }
     public int Id { get; }
     private static List<Record> _instances = new List<Record> {};
 
-    public Record(string albumName, string artistName)
+    public Record(string albumName)
     {
       Album = albumName;
-      Artist = artistName;
+      // Artist = artistName;
       _instances.Add(this);
       Id = _instances.Count;
     }
