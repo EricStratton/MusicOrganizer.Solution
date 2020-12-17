@@ -3,12 +3,13 @@
 <h3>Here are the records in this catalog:</h3>
 
 <ol>
-@foreach (Record record in @Model.["records"])
+@foreach (Record record in @Model["records"])
 {
-  <li><a href='/catalogs/@Model.["catalog"].Id/records/@record.Id'>@record.Description</a></p>
+  <li><a href='/catalogs/@Model.["catalog"].Id/records/@record.Id'>@record.Album</a></li>
+  <li><a href='/catalogs/@Model.["catalog"].Id/records/@record.Id'>@record.Artist</a></li>
 }
 </ol>
 
-<p><a href='/catalogs/@Model["catalog].Id/records/new'>Add another record</a></p>
+<p><a href='/catalogs/@Model["catalog"].Id/records/new'>Add another record</a></p>
 <p><a href='/catalogs'>Return to catalog list</a></p>
 <p><a href='/'>Return to Home</a></p>
