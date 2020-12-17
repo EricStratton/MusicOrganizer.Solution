@@ -19,7 +19,7 @@ namespace Organizer.Controllers
       Record record = Record.Find(recordId);
       Catalog catalog = Catalog.Find(catalogId);
       Dictionary<string, object> model = new Dictionary<string, object>();
-      model.Add("item", item);
+      model.Add("record", record);
       model.Add("catalog", catalog);
       return View(model);
     }
@@ -27,7 +27,7 @@ namespace Organizer.Controllers
     [HttpPost("/records/delete")]
     public ActionResult DeleteAll()
     {
-      Item.ClearAll();
+      Record.ClearAll();
       return View();
     }
   }

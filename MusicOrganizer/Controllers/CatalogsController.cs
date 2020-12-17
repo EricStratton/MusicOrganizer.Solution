@@ -17,7 +17,7 @@ namespace Organizer.Controllers
     [HttpGet("/catalogs/new")]
     public ActionResult New()
     {
-      return View;
+      return View();
     }
 
     [HttpPost("/catalogs")]
