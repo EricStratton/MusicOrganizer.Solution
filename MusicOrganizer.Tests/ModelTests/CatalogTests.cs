@@ -8,15 +8,13 @@ namespace Organizer.Tests
   [TestClass]
   public class CatalogTests
   {
-    [TestClass]
-    public class RecordTest 
+    
+    [TestMethod]
+    public void RecordConstructor_CreatesInstanceOfRecord_Record()
     {
-      [TestMethod]
-      public void RecordConstructor_CreatesInstanceOfRecord_Record()
-      {
-        Catalog newCatalog = new Catalog();
-        Assert.AreEqual(typeof(Catalog), newCatalog.GetType());
-      }
+      Catalog newCatalog = new Catalog("Test");
+      Assert.AreEqual(typeof(Catalog), newCatalog.GetType());
     }
+    
   }
 }
