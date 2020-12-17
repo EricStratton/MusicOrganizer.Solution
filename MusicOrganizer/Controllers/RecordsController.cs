@@ -24,11 +24,11 @@ namespace Organizer.Controllers
       return View(model);
     }
 
-    [HttpPost("/records/delete")]
-    public ActionResult DeleteAll()
-    {
-      Record.ClearAll();
-      return View();
-    }
+    // [HttpPost("/records/delete")]
+    // public ActionResult DeleteAll()
+    // {
+    //   Record.ClearAll();
+    //   return View();
+    // }
   }
 }

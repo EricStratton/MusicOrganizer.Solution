@@ -37,5 +37,18 @@ namespace Organizer.Controllers
       model.Add("records", catalogRecords);
       return View(model);
     }
+
+    [HttpGet("/catalogs/{catalogId}/records")] // 'Create' a new record
+    public ActionResult Create(int catalogId, string recordAlbum, string recordArtist)
+    {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Catalog foundCatalog = Catalog.Find(catalogId);
+      Record newRecord = new Record(recordAlbum, recordArtist);
+      foundCatalog.AddRecord(newRecord);
+      List<Record> catalogRecords = foundCatalog.Records;
+      model.Add("records", catalogRecords);
+      model.Add("catalog", foundCatalog);
+      return View("Show", model);
+    }
   }
 }
