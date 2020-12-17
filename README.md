@@ -1,8 +1,8 @@
-# _CDs_
+# _Records_
 
 ####  Dec 17th 2020_
 
-#### By _**Garrett Brown**_
+#### By _**Garrett Brown**_, _**Eric Stratton**_
 
 ## Description
 
@@ -34,4 +34,4 @@ _If you need support, pease contact Garrett Brown at <garrettpaulbrown@gmail.com
 
 *Available under MIT LIcense.*
 
-Copyright (c) 2020 **_Garrett Brown_**
+Copyright (c) 2020 **_Garrett Brown_**, **_Eric Stratton_**
