@@ -1,10 +1,14 @@
 # _Records_
 
-####  Dec 17th 2020_
+####  _Dec 17th 2020_
 
 #### By _**Garrett Brown**_, _**Eric Stratton**_
 
 ## Description
+
+* Allow user to create music catalogs for organization
+* Allow user to add multiple records to each catalog
+* Allow user to add artist and album info to record object
 
 
 ## Setup/Installation Requirements
@@ -18,7 +22,7 @@
 
 ## Known Bugs
 
-_There are currently no known bugs._
+_After adding a new 'Record' object to an existing 'Catalog', the record album name is not displayed under the 'Show' view of the corresponding catalog._
 
 ## Support and contact details
 
