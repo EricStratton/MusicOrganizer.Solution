@@ -32,7 +32,7 @@ _If you need support, pease contact Garrett Brown at <garrettpaulbrown@gmail.com
 * VS Code, CL
 * C# v 7.3
 * .NET Core v 2.2
-* dotnet script, REPL
+* dotnet script
 
 ### License
 
