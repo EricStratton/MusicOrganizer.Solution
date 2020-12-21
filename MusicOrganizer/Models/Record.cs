@@ -28,7 +28,7 @@ namespace Organizer.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT * FROM items;";
+      cmd.CommandText = @"SELECT * FROM records;"; // records is a table within the music_organizer database
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       while (rdr.Read())
       {
@@ -49,6 +49,14 @@ namespace Organizer.Models
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM records;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
     public static Record Find(int searchId)
@@ -56,6 +64,19 @@ namespace Organizer.Models
       // Placeholder code
       Record placeholderRecord = new Record("placeholder record");
       return placeholderRecord;
+    }
+    public override bool Equals(System.Object otherRecord)
+    {
+      if(!(otherRecord is Record))
+      {
+        return false;
+      }
+      else 
+      {
+        Record newRecord = (Record) otherRecord;
+        bool albumEquality = (this.Album == newRecord.Album);
+        return albumEquality;
+      }
     }
   }
 }
