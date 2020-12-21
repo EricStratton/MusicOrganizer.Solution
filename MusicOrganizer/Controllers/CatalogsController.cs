@@ -39,11 +39,11 @@ namespace Organizer.Controllers
     }
 
     [HttpPost("/catalogs/{catalogId}/records")] // 'Create' a new record
-    public ActionResult Create(int catalogId, string recordAlbum)
+    public ActionResult Create(int catalogId, string albumName)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
       Catalog foundCatalog = Catalog.Find(catalogId);
-      Record newRecord = new Record(recordAlbum);
+      Record newRecord = new Record(albumName);
       foundCatalog.AddRecord(newRecord);
       List<Record> catalogRecords = foundCatalog.Records;
       model.Add("records", catalogRecords);
