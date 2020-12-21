@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Mysql.Data.MySqlClient;
 
 namespace Organizer.Models
 {
@@ -8,29 +9,51 @@ namespace Organizer.Models
     public string Album { get; set; }
     // public string Artist { get; set; }
     public int Id { get; }
-    private static List<Record> _instances = new List<Record> {};
 
     public Record(string albumName)
     {
       Album = albumName;
       // Artist = artistName;
-      _instances.Add(this);
-      Id = _instances.Count;
+    }
+
+    public Record(string albumName, int albumId)
+      : this(albumName)
+    {
+      Id = albumId;
     }
     
     public static List<Record> GetAll()
     {
-      return _instances;
+      List<Record> allRecords = new List<Record> { };
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM items;";
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      while (rdr.Read())
+      {
+        int recordId = rdr.GetInt32(0);
+        string albumName = rdr.GetString(1);
+        Record newRecord = new Record(albumName, recordId);
+        allRecords.Add(newRecord);
+      }
+      conn.Close();
+      if (conn != null) // Am i still recieving data from the server? if yes, dispose connection.
+      {
+        conn.Dispose();
+      }
+      return allRecords;
     }
 
     public static void ClearAll()
     {
-      _instances.Clear();
     }
 
     public static Record Find(int searchId)
     {
-      return _instances[searchId-1];
+      // Placeholder code
+      Record placeholderRecord = new Record("placeholder record");
+      return placeholderRecord;
     }
   }
 }
