@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Mysql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Organizer.Models
 {
@@ -47,6 +47,8 @@ namespace Organizer.Models
 
     public static void ClearAll()
     {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
     }
 
     public static Record Find(int searchId)

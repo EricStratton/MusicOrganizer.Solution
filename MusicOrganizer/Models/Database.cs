@@ -2,7 +2,7 @@ using System;
 using MySql.Data.MySqlClient;
 using Organizer;
 
-namespace Organizer.Models;
+namespace Organizer.Models
 {
   public class DB
   {
