@@ -8,7 +8,7 @@ namespace Organizer.Models
 
     public string Album { get; set; }
     // public string Artist { get; set; }
-    public int Id { get; }
+    public int Id { get; set; }
 
     public Record(string albumName)
     {
@@ -65,6 +65,7 @@ namespace Organizer.Models
       Record placeholderRecord = new Record("placeholder record");
       return placeholderRecord;
     }
+
     public override bool Equals(System.Object otherRecord)
     {
       if(!(otherRecord is Record))
@@ -77,6 +78,20 @@ namespace Organizer.Models
         bool albumEquality = (this.Album == newRecord.Album);
         return albumEquality;
       }
+    }
+
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO records (album) VALUES (@RecordAlbum);";
+      MySqlParameter album = new MySqlParameter();
+      album.ParameterName = "@RecordAlbum";
+      album.Value = this.Album;
+      cmd.Parameters.Add(album);
+      cmd.ExecuteNonQuery();
+      Id = (int) cmd.LastInsertedId;
     }
   }
 }

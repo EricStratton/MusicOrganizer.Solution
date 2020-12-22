@@ -42,5 +42,27 @@ namespace Organizer.Tests
       Record secondRecord = new Record("Big Dumps");
       Assert.AreEqual(firstRecord, secondRecord);
     }
+
+    [TestMethod]
+    public void Save_SavesToDatabase_ItemList()
+    {
+      Record testRecord = new Record("Bitty Dumps");
+      testRecord.Save();
+      List<Record> result = Record.GetAll();
+      List<Record> testList = new List<Record> {testRecord};
+      CollectionAssert.AreEqual(testList, result);
+    }
+    
+    [TestMethod]
+    public void GetAll_ReturnsRecords_RecordList()
+    {
+      string albumName01 = "Dump Structure";
+      string albumName02 = "Dumps Like a Truck";
+      Record newRecord1 = new Record(albumName01);
+      newRecord1.Save();
+      Record newRecord2 = new Record(albumName02);
+      newrecord2.Save();
+      List<Record> newList = new List<Record> { newRecord1, newRecord2 };
+    }
   }
 }

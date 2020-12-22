@@ -44,6 +44,7 @@ namespace Organizer.Controllers
       Dictionary<string, object> model = new Dictionary<string, object>();
       Catalog foundCatalog = Catalog.Find(catalogId);
       Record newRecord = new Record(albumName);
+      newRecord.Save();
       foundCatalog.AddRecord(newRecord);
       List<Record> catalogRecords = foundCatalog.Records;
       model.Add("records", catalogRecords);
